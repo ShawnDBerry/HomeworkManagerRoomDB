@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements Contract.Homework
 
     @Override
     public void homeworkEmpty() {
-        homeListTextView.setText(getString(R.string.error_text, "No Saved Receipts"));
+        homeListTextView.setText(getString(R.string.no_homework_listed, "Homework Listed"));
     }
 
     @Override

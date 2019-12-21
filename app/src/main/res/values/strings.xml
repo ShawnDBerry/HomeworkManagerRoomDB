@@ -4,12 +4,13 @@
     <string name="create_new_homework_entry_button_text">CREATE NEW HOMEWORK ENTRY</string>
     <string name="insert_new_homework_entry_button_text">Save To List</string>
     <string name="homework_subject_text">Subject: %s android application</string>
-    <string name="homework_completed_text">Completed: %s Yes</string>
-    <string name="homework_week_text">Week: %s 1</string>
-    <string name="homework_day_text">Day: %d 1</string>
-    <string name="is_homework_complete_true">Yes</string>
-    <string name="is_homework_complete_false">No</string>
+    <string name="homework_completed_text">Completed: %s</string>
+    <string name="homework_week_text">Week: %s</string>
+    <string name="homework_day_text">Day: %d</string>
+    <string name="is_homework_complete_true">yes</string>
+    <string name="is_homework_complete_false">no</string>
     <string name="error_text">Error: %s</string>
+    <string name="no_homework_listed">No %s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="homework_subject_edittext">Enter Subject</string>

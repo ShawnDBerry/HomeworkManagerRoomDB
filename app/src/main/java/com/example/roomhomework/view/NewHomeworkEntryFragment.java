@@ -17,13 +17,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.roomhomework.R;
+import com.example.roomhomework.database.HomeWorkEntity;
+import com.example.roomhomework.presenter.Contract;
+import com.example.roomhomework.presenter.HomeworkPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class NewHomeworkEntryFragment extends Fragment {
+public class NewHomeworkEntryFragment extends Fragment implements Contract.HomeworkView {
+
+    private Contract.HomeworkPresenter homeworkPresenter;
 
     @BindView(R.id.enter_homework_subject_edittext)
     EditText enterHomeworkSubjectEditText;
@@ -59,11 +66,30 @@ public class NewHomeworkEntryFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
+        homeworkPresenter = new HomeworkPresenter(this);
+
+        insertNewHomeworkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               boolean isComplete = false;
+                if(enterHomeworkCompletedEditText.getText().toString().equals(R.string.is_homework_complete_true)){
+                    isComplete = true;
+                } else if (enterHomeworkCompletedEditText.getText().toString().equals(R.string.is_homework_complete_false)){
+                    isComplete = false;
+                }
+                homeworkPresenter.insertNewHomework(new HomeWorkEntity(enterHomeworkSubjectEditText.getText().toString(),
+                        Integer.parseInt(enterHomeworkWeekEditText.getText().toString()),
+                        Integer.parseInt(enterHomeworkWeekEditText.getText().toString()), isComplete));
+
+                getActivity().getSupportFragmentManager().popBackStack();
+                Log.d("TAG_X", "Im in here!");
+            }
+        });
 
     }
 
     @OnClick(R.id.close_icon_imageview)
-    public void closeFragment(View view){
+    public void closeFragment(View view) {
         getActivity().getSupportFragmentManager().popBackStack();
         Log.d("TAG_X", "WHere you at?");
     }
@@ -75,4 +101,23 @@ public class NewHomeworkEntryFragment extends Fragment {
     }
 
 
+    @Override
+    public void displayAllHomework(List<HomeWorkEntity> homeworkList) {
+
+    }
+
+    @Override
+    public void displayError(String errorString) {
+
+    }
+
+    @Override
+    public void homeworkEmpty() {
+
+    }
+
+    @Override
+    public void insertSuccess() {
+
+    }
 }
